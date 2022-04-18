@@ -1,0 +1,64 @@
+﻿@model FinalLabTest.Models.UserReg
+
+@{
+    ViewData["Title"] = "NewUserReg";
+    Layout = null;
+}
+
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h2 class="text-uppercase text-center">Register Here</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="NewUserReg" asp-controller="Home">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" type="text" required="required" autocomplete="off"  class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" type="email" required="required" autocomplete="off"  class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" type="password" required="required" autocomplete="off"  class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-sm btn-success text-uppercase rounded-0" />
+                    <span style="margin-left: 200px;">Already Have an Account </span><a asp-action="LogIn" asp-controller="Home"> Click Here</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<center style="font-weight:800">
+    <p style="color:#0094ff; font-size:130px;">Chetu</p>
+    <p style="font-size:24px; margin-top:-30px;">World Class Software Solution</p>
+</center>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

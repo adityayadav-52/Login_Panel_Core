@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FinalLabTest.Models.EmpRes>
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+    int sr = 1;
+}
+
+<h3></h3>
+<h1 style="color:#ff0000; text-align:center;">Employee List</h1>
+<table class="table table-bordered table-danger">
+    <thead>
+        <tr>
+            <th>Sr No.</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dept)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@sr</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dept)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Employee" asp-route-id="@item.Id" class="btn btn-success">Edit</a> ||
+                    <a asp-action="Delete" asp-controller="Employee" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            sr = sr + 1;
+        }
+    </tbody>
+</table>
+
+
+
+
+<script>
+        window.alert("Welcome " + " @HttpContextAccessor.HttpContext.Session.GetString("Name")");
+    </script>

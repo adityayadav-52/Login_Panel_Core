@@ -1,0 +1,66 @@
+﻿@model FinalLabTest.Models.EmpRes
+
+@{
+    ViewData["Title"] = "AddEmp";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="text-uppercase text-center">Add New Employee Details</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddEmp" asp-controller="Employee">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" type="text" required="required" autocomplete="off" maxlength="20"  class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" type="email" required="required" autocomplete="off" maxlength="20" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Salary"></label>
+                        <input asp-for="Salary" maxlength="8" type="number" required="required" autocomplete="off" class="form-control" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="City"></label>
+                        <input asp-for="City" maxlength="20" type="text" required="required" autocomplete="off" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Dept"></label>
+                        <input asp-for="Dept"  maxlength="15" type="text" required="required" autocomplete="off" class="form-control" />
+                        <span asp-validation-for="Dept" class="text-danger"></span>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-sm btn-success text-uppercase rounded-0" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
